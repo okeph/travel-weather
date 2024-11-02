@@ -13,12 +13,12 @@ app = FastAPI()
 app.mount("/.well-known", StaticFiles(directory=wellknown_path), name="static")
 
 
-
 # load historical json data and serialize it:
 with open(historical_data, "r") as f:
     data = json.load(f)
 
 @app.get('/')
+
 def root():
     """
     Allows to open the API documentation in the browser directly instead of
@@ -37,6 +37,8 @@ def monthly_average(country: str, city: str, month: str):
     return data[country][city][month]
 
 # Generate the OpenAPI schema:
+
 openapi_schema = app.openapi()
 with open(join(wellknown_path, "openapi.json"), "w") as f:
     json.dump(openapi_schema, f)
+    
