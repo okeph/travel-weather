@@ -13,6 +13,7 @@ app = FastAPI()
 app.mount("/.well-known", StaticFiles(directory=wellknown_path), name="static")
 
 
+my_variable = ""
 # load historical json data and serialize it:
 with open(historical_data, "r") as f:
     data = json.load(f)
