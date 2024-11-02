@@ -17,8 +17,8 @@ app.mount("/.well-known", StaticFiles(directory=wellknown_path), name="static")
 with open(historical_data, "r") as f:
     data = json.load(f)
 
-@app.get('/')
 
+@app.get('/')
 def root():
     """
     Allows to open the API documentation in the browser directly instead of
@@ -38,7 +38,7 @@ def monthly_average(country: str, city: str, month: str):
 
 # Generate the OpenAPI schema:
 
+
 openapi_schema = app.openapi()
 with open(join(wellknown_path, "openapi.json"), "w") as f:
     json.dump(openapi_schema, f)
-    
